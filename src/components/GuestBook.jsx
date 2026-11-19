@@ -35,20 +35,35 @@ export default function GuestBook() {
   const [message, setMessage] = useState('');
   const [selectedEmoji, setSelectedEmoji] = useState('💖');
 
-  // Fetch wishes from database
+  // Fetch wishes from database with local storage backup
   const fetchWishes = async () => {
     try {
       const res = await fetch('/api/wishes');
       if (res.ok) {
         const json = await res.json();
         if (json.success && Array.isArray(json.data)) {
-          setWishes(json.data);
+          // Merge with any locally saved device wishes
+          const localSaved = JSON.parse(localStorage.getItem('user_guest_wishes') || '[]');
+          const serverIds = new Set(json.data.map(w => w.id));
+          const uniqueLocal = localSaved.filter(w => !serverIds.has(w.id));
+          setWishes([...uniqueLocal, ...json.data]);
+          return;
         }
       }
     } catch (err) {
-      console.error('Failed to load wishes from database:', err);
+      console.warn('Could not fetch remote wishes, loading local cache:', err);
     } finally {
       setLoading(false);
+    }
+
+    // Fallback: load local cached wishes if remote is slow or offline
+    const localSaved = JSON.parse(localStorage.getItem('user_guest_wishes') || '[]');
+    if (localSaved.length > 0) {
+      setWishes(prev => {
+        const ids = new Set(prev.map(w => w.id));
+        const filtered = localSaved.filter(w => !ids.has(w.id));
+        return [...filtered, ...prev];
+      });
     }
   };
 
@@ -62,6 +77,16 @@ export default function GuestBook() {
     if (!name.trim() || !message.trim()) return;
 
     setSubmitting(true);
+    const newLocalWish = {
+      id: Date.now(),
+      name: name.trim(),
+      relation,
+      message: message.trim(),
+      emoji: selectedEmoji,
+      likes: 1,
+      created_at: new Date().toISOString()
+    };
+
     try {
       const res = await fetch('/api/wishes', {
         method: 'POST',
@@ -78,24 +103,35 @@ export default function GuestBook() {
         const json = await res.json();
         if (json.success && json.data) {
           setWishes(prev => [json.data, ...prev]);
-          setName('');
-          setMessage('');
-          setSuccessToast(true);
-          setTimeout(() => setSuccessToast(false), 4000);
-
-          // Confetti celebratory burst
-          confetti({
-            particleCount: 80,
-            spread: 70,
-            origin: { y: 0.7 },
-            colors: ['#D4AF37', '#F47293', '#FBCFE8', '#FAF4DC']
-          });
+        } else {
+          setWishes(prev => [newLocalWish, ...prev]);
         }
+      } else {
+        setWishes(prev => [newLocalWish, ...prev]);
       }
     } catch (err) {
-      console.error('Failed to post wish:', err);
+      console.warn('Network issue, saved wish locally:', err);
+      setWishes(prev => [newLocalWish, ...prev]);
     } finally {
+      // Cache wish locally so guest always sees it on their device
+      try {
+        const existing = JSON.parse(localStorage.getItem('user_guest_wishes') || '[]');
+        localStorage.setItem('user_guest_wishes', JSON.stringify([newLocalWish, ...existing]));
+      } catch (e) {}
+
+      setName('');
+      setMessage('');
+      setSuccessToast(true);
+      setTimeout(() => setSuccessToast(false), 4000);
       setSubmitting(false);
+
+      // Confetti celebratory burst
+      confetti({
+        particleCount: 80,
+        spread: 70,
+        origin: { y: 0.7 },
+        colors: ['#D4AF37', '#F47293', '#FBCFE8', '#FAF4DC']
+      });
     }
   };
 

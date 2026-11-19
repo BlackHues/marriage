@@ -3,7 +3,6 @@ import WeddingOpeningCard from './components/WeddingOpeningCard';
 import PetalEffects from './components/PetalEffects';
 import AudioControl from './components/AudioControl';
 import HeroSection from './components/HeroSection';
-import EventsTimeline from './components/EventsTimeline';
 import VenuesSection from './components/VenuesSection';
 import FamilySection from './components/FamilySection';
 import GuestBook from './components/GuestBook';
@@ -76,9 +75,6 @@ export default function App() {
           onOpenCardModal={() => setShowOriginalCard(true)}
           onScrollToSection={handleScrollToSection}
         />
-
-        {/* TIMELINE OF CEREMONIES */}
-        <EventsTimeline />
 
         {/* VENUES & MAPS */}
         <VenuesSection />

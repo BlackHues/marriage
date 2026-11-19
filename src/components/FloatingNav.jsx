@@ -4,7 +4,6 @@ import { Clock, Calendar, MapPin, MessageSquareHeart, MailOpen } from 'lucide-re
 export default function FloatingNav({ onReopenCard, onScrollTo }) {
   const navItems = [
     { id: 'countdown', label: 'Countdown', icon: Clock },
-    { id: 'timeline', label: 'Timeline', icon: Calendar },
     { id: 'venues', label: 'Venues', icon: MapPin },
     { id: 'guestbook', label: 'Wishes', icon: MessageSquareHeart },
   ];

@@ -5,7 +5,9 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const DB_PATH = path.join(__dirname, '..', 'wedding_wishes.db');
+const DB_PATH = process.env.VERCEL
+  ? '/tmp/wedding_wishes.db'
+  : path.join(__dirname, '..', 'wedding_wishes.db');
 const db = new DatabaseSync(DB_PATH);
 
 // Initialize tables

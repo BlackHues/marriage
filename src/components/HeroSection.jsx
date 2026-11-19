@@ -313,86 +313,159 @@ export default function HeroSection({ onOpenCardModal, onScrollToSection }) {
           </div>
         </div>
 
-        {/* Date & Muhurtham Highlight Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 max-w-4xl xl:max-w-5xl mx-auto my-6 text-left">
+        {/* ========================================================================= */}
+        {/* PROPERLY DESIGNED CEREMONIES & VENUES SHOWCASE (CLEAN & BALANCED)        */}
+        {/* ========================================================================= */}
+        <div className="my-8 max-w-4xl xl:max-w-5xl mx-auto">
           
-          {/* Date Card */}
-          <div className="p-5 sm:p-6 rounded-2xl bg-white border-2 border-wedding-gold-300 shadow-sm flex items-center gap-4 transition-transform hover:-translate-y-0.5">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-wedding-pink-100 border border-wedding-pink-300 flex flex-col items-center justify-center text-[#7A1F2B] shrink-0">
-              <span className="text-xs uppercase font-bold leading-none">Jan</span>
-              <span className="text-2xl sm:text-3xl font-bold leading-tight font-sans">24</span>
-            </div>
-            <div>
-              <div className="flex items-center gap-1.5 text-[#7A1F2B] font-bold text-xs uppercase tracking-wider">
-                <Calendar className="w-4 h-4" />
-                <span>Auspicious Wedding Date</span>
+          {/* Auspicious Date Banner */}
+          <div className="mb-6 flex flex-col items-center">
+            <span className="text-xs font-sans uppercase tracking-[0.25em] text-[#7A1F2B] font-bold">
+              Auspicious Wedding Day
+            </span>
+            <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#2B2B2B] mt-1">
+              Sunday, 24 January 2027
+            </h3>
+            <span className="text-xs sm:text-sm font-serif italic text-neutral-600 mt-0.5">
+              (10 Makaram 1202)
+            </span>
+          </div>
+
+          {/* TWO BALANCED & SYMMETRICAL EVENT CARDS */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 text-left">
+            
+            {/* EVENT 1: WEDDING CEREMONY */}
+            <div className="p-6 sm:p-7 rounded-2xl bg-white/90 border-2 border-[#C9A227]/60 shadow-sm flex flex-col justify-between transition-transform hover:-translate-y-0.5">
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="text-xs font-sans uppercase tracking-[0.2em] text-[#7A1F2B] font-bold px-3 py-1 rounded-full bg-[#7A1F2B]/10">
+                    1. Wedding Ceremony
+                  </span>
+                  <span className="text-xs font-serif font-semibold text-neutral-500">
+                    Morning
+                  </span>
+                </div>
+
+                <h4 className="font-serif text-xl sm:text-2xl font-bold text-neutral-900 leading-tight">
+                  Sivagiri Sarada Mutt, Varkala
+                </h4>
+                <p className="text-xs text-neutral-600 font-serif mt-1">
+                  Sivagiri Mutt Road, Varkala, Thiruvananthapuram
+                </p>
+
+                {/* Schedule Breakdown */}
+                <div className="mt-4 pt-3.5 border-t border-[#C9A227]/30 space-y-2.5">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-wedding-pink-100 text-[#7A1F2B] flex items-center justify-center shrink-0">
+                      <Clock className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-sans font-bold uppercase tracking-wider text-[#7A1F2B]">
+                        Auspicious Muhurtham
+                      </p>
+                      <p className="font-serif text-base sm:text-lg font-bold text-neutral-900 leading-none">
+                        10:05 AM – 10:50 AM
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2.5 pt-1">
+                    <div className="w-8 h-8 rounded-lg bg-wedding-gold-100 text-wedding-gold-800 flex items-center justify-center shrink-0">
+                      <Sparkles className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-sans font-bold uppercase tracking-wider text-neutral-600">
+                        Morning Reception
+                      </p>
+                      <p className="font-serif text-sm sm:text-base font-semibold text-neutral-800 leading-none">
+                        From 9:30 AM Onwards
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <p className="font-serif text-neutral-900 font-bold text-lg sm:text-xl">
-                Sunday, 24 January 2027
-              </p>
-              <p className="text-xs sm:text-sm text-neutral-600 font-serif font-medium">
-                (10 Makaram 1202)
-              </p>
-            </div>
-          </div>
 
-          {/* Muhurtham Card */}
-          <div className="p-5 sm:p-6 rounded-2xl bg-white border-2 border-wedding-gold-300 shadow-sm flex items-center gap-4 transition-transform hover:-translate-y-0.5">
-            <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-wedding-gold-100 border border-wedding-gold-300 flex flex-col items-center justify-center text-wedding-gold-800 shrink-0">
-              <Clock className="w-7 h-7" />
-            </div>
-            <div>
-              <div className="flex items-center gap-1.5 text-wedding-gold-700 font-bold text-xs uppercase tracking-wider">
-                <span>Auspicious Muhurtham</span>
+              {/* Map Link */}
+              <div className="mt-5 pt-3 border-t border-neutral-100">
+                <a
+                  href="https://maps.google.com/?q=Sivagiri+Sarada+Mutt+Varkala"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-sans font-bold text-[#7A1F2B] hover:text-[#9E1B47] hover:underline"
+                >
+                  <MapPin className="w-3.5 h-3.5" />
+                  <span>View on Google Maps & Directions →</span>
+                </a>
               </div>
-              <p className="font-serif text-neutral-900 font-bold text-lg sm:text-xl">
-                Between 10.05 am & 10.50 am
-              </p>
-              <p className="text-xs sm:text-sm text-neutral-600 font-serif font-medium">
-                Morning Reception at 9.30 am
-              </p>
             </div>
+
+            {/* EVENT 2: EVENING RECEPTION */}
+            <div className="p-6 sm:p-7 rounded-2xl bg-white/90 border-2 border-[#C9A227]/60 shadow-sm flex flex-col justify-between transition-transform hover:-translate-y-0.5">
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="text-xs font-sans uppercase tracking-[0.2em] text-[#C9A227] font-bold px-3 py-1 rounded-full bg-[#C9A227]/15">
+                    2. Evening Reception
+                  </span>
+                  <span className="text-xs font-serif font-semibold text-neutral-500">
+                    Evening
+                  </span>
+                </div>
+
+                <h4 className="font-serif text-xl sm:text-2xl font-bold text-neutral-900 leading-tight">
+                  Harizon Plaza, Alamcode
+                </h4>
+                <p className="text-xs text-neutral-600 font-serif mt-1">
+                  Main Road, Alamcode, Attingal
+                </p>
+
+                {/* Schedule Breakdown */}
+                <div className="mt-4 pt-3.5 border-t border-[#C9A227]/30 space-y-2.5">
+                  <div className="flex items-center gap-2.5">
+                    <div className="w-8 h-8 rounded-lg bg-wedding-gold-100 text-wedding-gold-800 flex items-center justify-center shrink-0">
+                      <Clock className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-sans font-bold uppercase tracking-wider text-[#C9A227]">
+                        Reception & Dinner
+                      </p>
+                      <p className="font-serif text-base sm:text-lg font-bold text-neutral-900 leading-none">
+                        4:30 PM Onwards
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2.5 pt-1">
+                    <div className="w-8 h-8 rounded-lg bg-wedding-pink-100 text-[#7A1F2B] flex items-center justify-center shrink-0">
+                      <Heart className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-sans font-bold uppercase tracking-wider text-neutral-600">
+                        Celebration
+                      </p>
+                      <p className="font-serif text-sm sm:text-base font-semibold text-neutral-800 leading-none">
+                        With Family, Relatives & Friends
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Map Link */}
+              <div className="mt-5 pt-3 border-t border-neutral-100">
+                <a
+                  href="https://maps.google.com/?q=Harizon+Plaza+Alamcode+Attingal"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-sans font-bold text-[#C9A227] hover:text-[#7A1F2B] hover:underline"
+                >
+                  <MapPin className="w-3.5 h-3.5" />
+                  <span>View on Google Maps & Directions →</span>
+                </a>
+              </div>
+            </div>
+
           </div>
 
-        </div>
-
-        {/* Venues Summary Cards */}
-        <div className="my-6 max-w-4xl xl:max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
-          {/* Ceremony Venue */}
-          <div className="p-5 rounded-2xl bg-white border-2 border-wedding-gold-300 shadow-sm flex items-start gap-3">
-            <div className="w-10 h-10 rounded-xl bg-wedding-pink-100 text-[#7A1F2B] flex items-center justify-center shrink-0 mt-0.5">
-              <MapPin className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="text-[11px] font-sans font-bold uppercase tracking-wider text-[#7A1F2B] block">
-                1. Wedding Ceremony & Muhurtham
-              </span>
-              <h4 className="font-serif text-lg sm:text-xl font-bold text-neutral-900 mt-0.5">
-                Sivagiri Sarada Mutt, Varkala
-              </h4>
-              <p className="text-xs sm:text-sm text-neutral-700 font-serif mt-1">
-                Morning Reception at 9:30 AM • Muhurtham 10:05 AM – 10:50 AM
-              </p>
-            </div>
-          </div>
-
-          {/* Evening Reception Dedicated Box (Highlighted) */}
-          <div className="p-5 rounded-2xl bg-gradient-to-r from-[#FAF4DC] via-white to-[#FAF4DC] border-2 border-[#C9A227] shadow-sm flex items-start gap-3">
-            <div className="w-10 h-10 rounded-xl bg-wedding-gold-200 text-[#7A1F2B] flex items-center justify-center shrink-0 mt-0.5">
-              <Sparkles className="w-5 h-5" />
-            </div>
-            <div>
-              <span className="text-[11px] font-sans font-bold uppercase tracking-wider text-[#7A1F2B] block">
-                2. Evening Reception & Dinner
-              </span>
-              <h4 className="font-serif text-lg sm:text-xl font-bold text-neutral-900 mt-0.5">
-                Harizon Plaza, Alamcode
-              </h4>
-              <p className="text-xs sm:text-sm text-[#2B2B2B] font-serif font-semibold mt-1">
-                From 4:30 PM Onwards • With Family & Friends
-              </p>
-            </div>
-          </div>
         </div>
 
         {/* Best Compliments */}
@@ -411,11 +484,11 @@ export default function HeroSection({ onOpenCardModal, onScrollToSection }) {
           </button>
 
           <button
-            onClick={() => onScrollToSection('timeline')}
+            onClick={() => onScrollToSection('venues')}
             className="flex items-center gap-2 px-7 py-3.5 rounded-full bg-white border-2 border-wedding-gold-400 text-wedding-gold-800 font-bold shadow-sm hover:bg-wedding-gold-50 hover:scale-105 transition-all text-sm sm:text-base cursor-pointer"
           >
-            <Clock className="w-4 h-4 text-wedding-gold-600" />
-            <span>Ceremony Timeline</span>
+            <MapPin className="w-4 h-4 text-wedding-gold-600" />
+            <span>Wedding Venues & Map</span>
           </button>
 
           <button
