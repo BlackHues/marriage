@@ -1,7 +1,0 @@
-node_modules/
-dist/
-wedding_wishes.db
-.env
-.env.local
-.DS_Store
-*.log

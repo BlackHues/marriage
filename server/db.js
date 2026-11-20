@@ -23,49 +23,24 @@ export function initDb() {
       created_at DATETIME DEFAULT CURRENT_TIMESTAMP
     );
     CREATE INDEX IF NOT EXISTS idx_wishes_created ON wishes(created_at DESC);
+
+    CREATE TABLE IF NOT EXISTS wish_likes (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      wish_id INTEGER NOT NULL,
+      user_token TEXT NOT NULL,
+      ip TEXT,
+      created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+      UNIQUE(wish_id, user_token)
+    );
+    CREATE INDEX IF NOT EXISTS idx_wish_likes_lookup ON wish_likes(wish_id, user_token);
   `);
+}
 
-  // Check if we should seed default blessing wishes
-  const countStmt = db.prepare('SELECT COUNT(*) as count FROM wishes');
-  const result = countStmt.get();
-  if (result && result.count === 0) {
-    const seedStmt = db.prepare(`
-      INSERT INTO wishes (name, relation, message, emoji, likes, created_at)
-      VALUES (?, ?, ?, ?, ?, datetime('now', ?))
-    `);
-
-    const seeds = [
-      {
-        name: 'Hayzen & Adithi',
-        relation: 'Family',
-        message: 'Wishing dear Abhirami chechi & Ajeesh ettan an eternal lifetime of love, laughter, and endless happiness! So thrilled for you both! ✨💍❤️',
-        emoji: '💐',
-        likes: 12,
-        offset: '-2 hours'
-      },
-      {
-        name: 'Adithya',
-        relation: 'Family',
-        message: 'Heartiest congratulations to the most gorgeous couple! May your journey ahead be blessed with boundless joy and prosperity. 🌸🥂',
-        emoji: '✨',
-        likes: 8,
-        offset: '-1 hour'
-      },
-      {
-        name: 'K. Sanjayan & Leena. R',
-        relation: 'Bride\'s Parents',
-        message: 'With all our heart and blessings for our beloved daughter Abhirami and dearest Ajeesh as they begin this divine chapter together. May Lord Gurudev bless you always.',
-        emoji: '🙏',
-        likes: 24,
-        offset: '-30 minutes'
-      }
-    ];
-
-    for (const item of seeds) {
-      seedStmt.run(item.name, item.relation, item.message, item.emoji, item.likes, item.offset);
-    }
-    console.log('✅ Initial wedding blessings seeded into SQLite database.');
-  }
+export function clearDb() {
+  db.exec(`
+    DELETE FROM wishes;
+    DELETE FROM sqlite_sequence WHERE name='wishes';
+  `);
 }
 
 export function getAllWishes() {
@@ -93,11 +68,39 @@ export function addWish({ name, relation, message, emoji }) {
   return getStmt.get(info.lastInsertRowid);
 }
 
-export function likeWish(id) {
+export function likeWish(id, userToken, ip) {
+  const wishId = Number(id);
+  const token = (userToken || '').trim() || (ip || 'anonymous');
+
+  // Check if this user has already given love to this wish
+  const checkStmt = db.prepare('SELECT id FROM wish_likes WHERE wish_id = ? AND user_token = ?');
+  const existing = checkStmt.get(wishId, token);
+
+  if (existing) {
+    // Already liked by this user! Do not increment again.
+    const getStmt = db.prepare('SELECT likes FROM wishes WHERE id = ?');
+    const row = getStmt.get(wishId);
+    return { success: false, alreadyLiked: true, likes: row ? row.likes : 0 };
+  }
+
+  // Record this like in wish_likes
+  try {
+    const insertStmt = db.prepare('INSERT INTO wish_likes (wish_id, user_token, ip) VALUES (?, ?, ?)');
+    insertStmt.run(wishId, token, ip || '');
+  } catch (err) {
+    // If unique constraint triggers concurrently
+    const getStmt = db.prepare('SELECT likes FROM wishes WHERE id = ?');
+    const row = getStmt.get(wishId);
+    return { success: false, alreadyLiked: true, likes: row ? row.likes : 0 };
+  }
+
+  // Increment wish likes
   const stmt = db.prepare('UPDATE wishes SET likes = likes + 1 WHERE id = ?');
-  stmt.run(Number(id));
+  stmt.run(wishId);
+
   const getStmt = db.prepare('SELECT likes FROM wishes WHERE id = ?');
-  return getStmt.get(Number(id));
+  const updated = getStmt.get(wishId);
+  return { success: true, alreadyLiked: false, likes: updated ? updated.likes : 0 };
 }
 
 export function getStats() {
@@ -107,6 +110,7 @@ export function getStats() {
 
 export default {
   initDb,
+  clearDb,
   getAllWishes,
   addWish,
   likeWish,

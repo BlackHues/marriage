@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, Download, Calendar, ExternalLink, Image, Sparkles } from 'lucide-react';
+import { X, Download, Calendar, ExternalLink, Image, Heart } from 'lucide-react';
 import KeralaWeddingCard from './KeralaWeddingCard';
 
 export default function OriginalCardModal({ isOpen, onClose }) {
@@ -15,7 +15,7 @@ export default function OriginalCardModal({ isOpen, onClose }) {
         <div className="p-4 bg-gradient-to-r from-wedding-pink-100 via-white to-wedding-gold-100 border-b border-wedding-gold-300 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-full bg-[#7A1F2B] text-[#E5C158] flex items-center justify-center">
-              <Sparkles className="w-4 h-4" />
+              <Heart className="w-4 h-4 fill-[#E5C158]" />
             </div>
             <div>
               <h4 className="font-serif font-bold text-base sm:text-lg text-[#2B2B2B]">
@@ -46,7 +46,7 @@ export default function OriginalCardModal({ isOpen, onClose }) {
                 : 'border-transparent text-neutral-600 hover:text-neutral-900'
             }`}
           >
-            ✨ Digital Invitation (4:5)
+            Digital Invitation (4:5)
           </button>
           <button
             onClick={() => setActiveTab('printed')}

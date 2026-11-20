@@ -459,7 +459,7 @@ export default function KeralaWeddingCard({
 
             {/* Google Maps QR Code Thumbnail */}
             <a
-              href="https://maps.google.com/?q=Sivagiri+Sarada+Mutt+Varkala"
+              href="https://maps.app.goo.gl/1GZLNi8eUNfY3Eu67"
               target="_blank"
               rel="noopener noreferrer"
               title="Tap or Scan for Google Maps Navigation"
@@ -515,7 +515,7 @@ export default function KeralaWeddingCard({
           </a>
 
           <a
-            href="https://maps.google.com/?q=Sivagiri+Sarada+Mutt+Varkala"
+            href="https://maps.app.goo.gl/1GZLNi8eUNfY3Eu67"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border-2 border-[#C9A227] text-[#2B2B2B] hover:bg-[#FAF4DC] text-xs sm:text-sm font-bold shadow-sm hover:scale-105 transition-all"

@@ -1,0 +1,60 @@
+/* GuestbookSection Styles & CSS Variables */
+:root {
+  /* Authentic Kerala Royal Wedding Theme: Cream, Maroon, Gold & Warm Ink */
+  --gb-bg: #FAF6EE;
+  --gb-maroon: #7A1F3D;
+  --gb-maroon-hover: #61162E;
+  --gb-maroon-light: #9E2A44;
+  --gb-gold: #C9A24B;
+  --gb-gold-light: #E5C158;
+  --gb-ink: #2B2B2B;
+  --gb-card-bg: #FFFFFF;
+  --gb-card-border: rgba(201, 162, 75, 0.35);
+  --gb-muted: #666666;
+  --gb-tape: rgba(255, 255, 255, 0.78);
+  --gb-tape-border: rgba(201, 162, 75, 0.3);
+
+  --font-heading: 'Cormorant Garamond', 'Noto Serif Malayalam', Georgia, serif;
+  --font-body: 'Rubik', 'Hanken Grotesk', system-ui, -apple-system, sans-serif;
+  --font-note: 'Tangerine', 'Gayathri', 'Noto Serif Malayalam', cursive, sans-serif;
+  --font-sig: 'Tangerine', cursive;
+  --font-tag: 'Gayathri', 'Rubik', sans-serif;
+}
+
+.guestbook-root {
+  background-color: var(--gb-bg);
+  color: var(--gb-ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+.guestbook-heading {
+  font-family: var(--font-heading);
+}
+
+.guestbook-note-text {
+  font-family: var(--font-note);
+}
+
+.guestbook-signature {
+  font-family: var(--font-sig);
+}
+
+/* Accessible focus ring */
+.gb-focus-visible:focus-visible {
+  outline: 2px solid var(--gb-maroon);
+  outline-offset: 2px;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .guestbook-root *,
+  .guestbook-root *::before,
+  .guestbook-root *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    transform: none !important;
+  }
+}

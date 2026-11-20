@@ -46,8 +46,10 @@ app.post('/api/wishes', (req, res) => {
 app.post('/api/wishes/:id/like', (req, res) => {
   try {
     const { id } = req.params;
-    const result = db.likeWish(id);
-    res.json({ success: true, likes: result ? result.likes : 0 });
+    const { userToken } = req.body || {};
+    const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || '';
+    const result = db.likeWish(id, userToken, ip);
+    res.json(result);
   } catch (err) {
     console.error('Error liking wish:', err);
     res.status(500).json({ success: false, error: 'Failed to update like' });
@@ -75,8 +77,15 @@ app.get('/api/stats', (req, res) => {
 // Serve static frontend in production (dist directory)
 const distPath = path.join(__dirname, '..', 'dist');
 if (fs.existsSync(distPath)) {
-  app.use(express.static(distPath));
+  app.use(express.static(distPath, {
+    setHeaders: (res, filePath) => {
+      if (filePath.endsWith('.html')) {
+        res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
+      }
+    }
+  }));
   app.get('*', (req, res) => {
+    res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
     res.sendFile(path.join(distPath, 'index.html'));
   });
 }

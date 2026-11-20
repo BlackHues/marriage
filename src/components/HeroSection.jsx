@@ -1,7 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Clock, MapPin, Heart, BookOpen, Sparkles, Navigation, Phone } from 'lucide-react';
+import { 
+  Calendar, 
+  Clock, 
+  MapPin, 
+  Phone, 
+  Heart, 
+  Sparkles, 
+  Crown, 
+  SunMedium, 
+  Landmark, 
+  UtensilsCrossed, 
+  ArrowLeft,
+  ArrowRight, 
+  Flower2 
+} from 'lucide-react';
 
-export default function HeroSection({ onOpenCardModal, onScrollToSection }) {
+export default function HeroSection({ onOpenCardModal, onScrollToSection, bridePhoto, groomPhoto }) {
   // Target: Jan 24, 2027 10:05 AM IST
   const targetTime = new Date('2027-01-24T10:05:00+05:30').getTime();
 
@@ -44,9 +58,9 @@ export default function HeroSection({ onOpenCardModal, onScrollToSection }) {
     <section className="relative w-full overflow-hidden">
       
       {/* ========================================================================= */}
-      {/* 1. TOP HERO BANNER (MATCHING REFERENCE THEME & SPLIT LAYOUT ON PC)        */}
+      {/* 1. TOP HERO BANNER (FULL VIEWPORT HEIGHT: 100vh / 100dvh)                 */}
       {/* ========================================================================= */}
-      <div className="relative w-full min-h-[600px] md:min-h-[680px] lg:min-h-[760px] bg-gradient-to-r from-[#F6E6E1] via-[#FAF0ED] to-[#FDF5F2] border-b border-[#E8D7D3] overflow-hidden flex items-center">
+      <div className="relative w-full min-h-screen min-h-[100dvh] bg-gradient-to-r from-[#F6E6E1] via-[#FAF0ED] to-[#FDF5F2] border-b border-[#E8D7D3] overflow-hidden flex flex-col justify-center items-center">
         
         {/* Soft Watercolor Washes & Atmospheric Cloud Textures */}
         <div 
@@ -119,7 +133,7 @@ export default function HeroSection({ onOpenCardModal, onScrollToSection }) {
         </div>
 
         {/* 2-COLUMN FULL-WIDTH RESPONSIVE CONTAINER (1200-1500px ON PC) */}
-        <div className="relative z-20 max-w-[1440px] 2xl:max-w-[1500px] w-full mx-auto px-4 sm:px-8 lg:px-14 py-10 sm:py-14 md:py-16">
+        <div className="relative z-20 max-w-[1440px] 2xl:max-w-[1500px] w-full mx-auto px-4 sm:px-8 lg:px-14 py-6 sm:py-8 my-auto">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             
             {/* ------------------------------------------------------------- */}
@@ -128,8 +142,45 @@ export default function HeroSection({ onOpenCardModal, onScrollToSection }) {
             <div className="lg:col-span-6 xl:col-span-5 flex justify-center lg:justify-end items-center">
               <div className="relative w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl flex items-center justify-center">
                 
-                {/* Soft Watercolor Halo behind Couple */}
-                <div className="absolute -inset-8 bg-gradient-to-tr from-[#E8B8AE]/35 via-[#F7D8D0]/45 to-transparent rounded-full blur-3xl pointer-events-none" />
+                {/* Soft Romantic Ambient Halo behind Couple */}
+                <div className="absolute -inset-10 bg-gradient-to-tr from-[#E8B8AE]/40 via-[#F7D8D0]/50 to-transparent rounded-full blur-3xl pointer-events-none" />
+
+                {/* Royal Kerala Stage Mandap Arch Outline (Behind Couple) */}
+                <div className="absolute -inset-3 sm:-inset-5 border border-[#C9A227]/35 rounded-t-[140px] pointer-events-none" />
+                <div className="absolute -inset-1.5 sm:-inset-2.5 border border-[#E5C158]/25 rounded-t-[130px] pointer-events-none" />
+
+                {/* Hanging Kerala Brass Lamp (Thookkuvilakku) on Left */}
+                <div className="absolute -top-6 -left-3 sm:-left-6 w-10 sm:w-14 pointer-events-none z-20 opacity-90">
+                  <svg viewBox="0 0 60 160" fill="none" className="w-full h-auto drop-shadow-sm">
+                    {/* Golden Chain */}
+                    <line x1="30" y1="0" x2="30" y2="75" stroke="#C9A227" strokeWidth="1.5" strokeDasharray="3 2" />
+                    {/* Lamp Crown */}
+                    <polygon points="30,75 22,85 38,85" fill="#C9A227" />
+                    {/* Lamp Bowl (Agal) */}
+                    <ellipse cx="30" cy="94" rx="16" ry="5" fill="#D4AF37" />
+                    <path d="M14 94 Q30 108 46 94 Z" fill="#B8860B" />
+                    {/* Glowing Wick Flame */}
+                    <path d="M30 87 Q33 81 30 74 Q27 81 30 87 Z" fill="#FFB703" />
+                    <circle cx="30" cy="81" r="2.5" fill="#FFE8A3" />
+                    {/* Bottom Drop Bell */}
+                    <circle cx="30" cy="112" r="3.5" fill="#C9A227" />
+                    {/* Gentle Warm Glow */}
+                    <circle cx="30" cy="80" r="12" fill="#FFB703" opacity="0.35" filter="blur(4px)" />
+                  </svg>
+                </div>
+
+                {/* Cascading Jasmine (Mulla Poo) & Floral Drapes (Top Right) */}
+                <div className="absolute -top-4 -right-2 sm:-right-4 w-16 sm:w-20 pointer-events-none z-20 opacity-85">
+                  <svg viewBox="0 0 80 120" fill="none" className="w-full h-auto">
+                    {/* Jasmine Strands */}
+                    <path d="M40 0 Q45 40 50 90" stroke="#FFFDF9" strokeWidth="3" strokeDasharray="5 4" strokeLinecap="round" />
+                    <path d="M55 0 Q58 35 62 80" stroke="#FAF4DC" strokeWidth="2.5" strokeDasharray="4 3" strokeLinecap="round" />
+                    {/* Delicate Pink Rose Accent */}
+                    <circle cx="48" cy="25" r="7" fill="#F47293" opacity="0.85" />
+                    <circle cx="48" cy="25" r="4" fill="#FBCFE8" />
+                    <circle cx="56" cy="50" r="6" fill="#F47293" opacity="0.8" />
+                  </svg>
+                </div>
 
                 {/* Borderless Feathered Couple Image (Blends 100% Seamlessly with Page) */}
                 <div 
@@ -142,7 +193,7 @@ export default function HeroSection({ onOpenCardModal, onScrollToSection }) {
                   <img
                     src="/couple.jpg"
                     alt="Abhirami & Ajeesh"
-                    className="w-full h-auto max-h-[540px] sm:max-h-[640px] lg:max-h-[720px] object-cover object-top mx-auto"
+                    className="w-full h-auto max-h-[460px] sm:max-h-[520px] md:max-h-[580px] lg:max-h-[66vh] object-cover object-top mx-auto"
                   />
 
                   {/* Soft bottom edge gradient melt into page */}
@@ -158,39 +209,39 @@ export default function HeroSection({ onOpenCardModal, onScrollToSection }) {
             <div className="lg:col-span-6 xl:col-span-7 text-center flex flex-col items-center justify-center px-2 sm:px-6">
               
               {/* Couple Names in Luxurious Italic Serif Calligraphy (Like Reference) */}
-              <div className="my-2 sm:my-3">
-                <h1 className="font-serif italic text-5xl sm:text-7xl md:text-8xl lg:text-[5.5rem] xl:text-[6.5rem] text-[#7A1F2B] font-normal leading-[1.05] tracking-wide drop-shadow-sm select-none">
+              <div className="my-1 sm:my-2">
+                <h1 className="font-serif italic text-4xl sm:text-6xl md:text-7xl lg:text-[4.8rem] xl:text-[5.6rem] text-[#7A1F2B] font-normal leading-[1.05] tracking-wide drop-shadow-sm select-none">
                   Abhirami
                 </h1>
                 
-                <div className="font-serif italic text-2xl sm:text-3xl md:text-4xl text-[#A66E5E] my-1 sm:my-2 font-normal">
+                <div className="font-serif italic text-xl sm:text-2xl md:text-3xl text-[#A66E5E] my-0.5 sm:my-1 font-normal">
                   &
                 </div>
 
-                <h1 className="font-serif italic text-5xl sm:text-7xl md:text-8xl lg:text-[5.5rem] xl:text-[6.5rem] text-[#7A1F2B] font-normal leading-[1.05] tracking-wide drop-shadow-sm select-none">
+                <h1 className="font-serif italic text-4xl sm:text-6xl md:text-7xl lg:text-[4.8rem] xl:text-[5.6rem] text-[#7A1F2B] font-normal leading-[1.05] tracking-wide drop-shadow-sm select-none">
                   Ajeesh
                 </h1>
               </div>
 
               {/* Date in Clean Serif */}
-              <p className="font-serif text-lg sm:text-xl md:text-2xl text-[#2B2B2B] font-semibold tracking-wide mt-4 mb-2">
+              <p className="font-serif text-base sm:text-lg md:text-xl text-[#2B2B2B] font-semibold tracking-wide mt-2 mb-1">
                 January 24, 2027
               </p>
 
               {/* Romantic Invitation Quote (Exactly Matching Reference Sentiment) */}
-              <p className="font-serif italic text-sm sm:text-base md:text-lg text-[#523F3C] max-w-lg mx-auto leading-relaxed px-2 font-medium">
+              <p className="font-serif italic text-xs sm:text-sm md:text-base text-[#523F3C] max-w-lg mx-auto leading-relaxed px-2 font-medium">
                 "With hearts full of love, we invite you to join us as we begin our forever."
               </p>
 
               {/* COUNTING DOWN TO FOREVER (SECTION HEADER) */}
-              <div id="countdown" className="mt-8 mb-3 scroll-mt-20">
+              <div id="countdown" className="mt-4 sm:mt-5 mb-1.5 scroll-mt-20">
                 <span className="font-sans text-[10px] sm:text-xs uppercase tracking-[0.25em] text-[#8C665D] font-bold block">
                   Counting Down To Forever
                 </span>
               </div>
 
               {/* SLEEK INTEGRATED COUNTDOWN BOX (EXACTLY MATCHING REFERENCE TIMER) */}
-              <div className="w-full max-w-sm sm:max-w-md bg-white/90 backdrop-blur-md rounded-2xl border border-[#DFC8C2] shadow-lg p-3 sm:p-5 my-2">
+              <div className="w-full max-w-sm sm:max-w-md bg-white/90 backdrop-blur-md rounded-2xl border border-[#DFC8C2] shadow-lg p-3 sm:p-4 my-1">
                 <div className="grid grid-cols-4 divide-x divide-[#DFC8C2]">
                   
                   {/* Days */}
@@ -244,263 +295,565 @@ export default function HeroSection({ onOpenCardModal, onScrollToSection }) {
       </div>
 
       {/* ========================================================================= */}
-      {/* 2. INVITATION & CEREMONY DETAILS (BELOW TOP HERO BANNER)                   */}
+      {/* 2. WEDDING INVITATION SECTION (PREMIUM ROYAL KERALA REDESIGN)             */}
       {/* ========================================================================= */}
-      <div className="max-w-[1440px] 2xl:max-w-[1500px] mx-auto px-4 sm:px-8 lg:px-12 py-12 text-center">
+      <div 
+        id="invitation-details" 
+        className="wedding-invite-theme relative z-10 max-w-[1440px] 2xl:max-w-[1500px] w-full mx-auto px-4 sm:px-8 lg:px-14 py-14 sm:py-16 text-center scroll-mt-6"
+      >
+        {/* Scoped CSS Variables and Prefers-Reduced-Motion Animations */}
+        <style>{`
+          .wedding-invite-theme {
+            --color-maroon: #7A1F3D;
+            --color-maroon-dark: #631730;
+            --color-gold: #C9A24B;
+            --color-gold-light: #E8D399;
+            --color-charcoal: #2B2B2B;
+            --color-muted: #6B6B6B;
+            --font-heading: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+            --font-body: 'Inter', 'Montserrat', system-ui, sans-serif;
+          }
+          @keyframes cardFadeUp {
+            from {
+              opacity: 0;
+              transform: translateY(14px);
+            }
+            to {
+              opacity: 1;
+              transform: translateY(0);
+            }
+          }
+          @media (prefers-reduced-motion: no-preference) {
+            .card-fade-up {
+              animation: cardFadeUp 0.5s ease-out both;
+            }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .card-fade-up {
+              opacity: 1 !important;
+              transform: none !important;
+              animation: none !important;
+            }
+          }
+        `}</style>
         
-        {/* Subtle Decorative Golden Divider */}
-        <div className="mb-8 flex items-center justify-center gap-3">
-          <span className="h-[1px] w-20 sm:w-36 bg-gradient-to-r from-transparent via-[#C9A227] to-[#C9A227]" />
-          <Sparkles className="w-4 h-4 text-[#C9A227]" />
-          <span className="h-[1px] w-20 sm:w-36 bg-gradient-to-l from-transparent via-[#C9A227] to-[#C9A227]" />
+        {/* Subtle Decorative Golden Header Divider with Central Lotus Motif */}
+        <div className="mb-6 flex items-center justify-center gap-3">
+          <span className="h-[1px] w-20 sm:w-36 bg-gradient-to-r from-transparent via-[#C9A24B] to-[#C9A24B]" />
+          <svg width="26" height="22" viewBox="0 0 28 24" fill="none" className="text-[#C9A24B] shrink-0" aria-hidden="true">
+            <path d="M14 2C14 2 10.5 8.5 10.5 13C10.5 15.5 12 17.5 14 17.5C16 17.5 17.5 15.5 17.5 13C17.5 8.5 14 2 14 2Z" fill="#C9A24B" />
+            <path d="M14 7.5C14 7.5 8 10 7 14.5C6.5 17 8.5 19 11 18.5C12.5 18 13.5 16 14 14.5" stroke="#C9A24B" strokeWidth="1.2" strokeLinecap="round" />
+            <path d="M14 7.5C14 7.5 20 10 21 14.5C21.5 17 19.5 19 17 18.5C15.5 18 14.5 16 14 14.5" stroke="#C9A24B" strokeWidth="1.2" strokeLinecap="round" />
+            <circle cx="14" cy="20.5" r="1.5" fill="#7A1F3D" />
+          </svg>
+          <span className="h-[1px] w-20 sm:w-36 bg-gradient-to-l from-transparent via-[#C9A24B] to-[#C9A24B]" />
         </div>
 
-        {/* Formal Invitation & Both Families */}
-        <div className="mb-6 px-4 max-w-4xl mx-auto">
-          <p className="text-base sm:text-lg md:text-xl text-neutral-800 font-serif italic mb-6 leading-relaxed max-w-2xl mx-auto">
-            Solicit your gracious presence & blessings on the auspicious occasion of the wedding ceremony of
+        {/* Formal Invitation Heading & Subtitle */}
+        <div className="mb-8 px-2 max-w-2xl mx-auto">
+          <h2 className="text-[11px] sm:text-[12px] font-sans uppercase tracking-[0.2em] text-[#7A1F3D] font-semibold block mb-2">
+            Wedding Invitation
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl text-[#2B2B2B] font-serif italic leading-relaxed">
+            Solicit your gracious presence &amp; blessings on the auspicious occasion of the wedding ceremony of
           </p>
+        </div>
 
-          {/* BRIDE & GROOM DETAILS (EXACT SAME STYLE SIDE-BY-SIDE) */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 max-w-4xl xl:max-w-5xl mx-auto my-4 text-center">
+        {/* ===================================================================== */}
+        {/* ROW: THE BRIDE & THE GROOM (SAME ROW WITH CONTENTS INSIDE PICTURE)    */}
+        {/* ===================================================================== */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 items-stretch mb-9 sm:mb-10 text-left">
+          
+          {/* ========================================== */}
+          {/* 1. THE BRIDE CARD (CONTENTS INSIDE PIC)    */}
+          {/* ========================================== */}
+          <div 
+            className="card-fade-up relative z-10 w-full min-h-[580px] sm:min-h-[620px] lg:min-h-[660px] rounded-3xl overflow-hidden border border-[#C9A24B]/40 shadow-[0_12px_40px_rgba(122,31,61,0.12)] flex flex-col justify-between p-4 sm:p-6 lg:p-7 group transition-all duration-300 hover:shadow-2xl hover:border-[#C9A24B]"
+            style={{ animationDelay: '0ms' }}
+          >
+            {/* Background Picture */}
+            <img 
+              src={bridePhoto || "/bride-editorial.jpg"} 
+              alt="The Bride - Abhirami S L" 
+              className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105 pointer-events-none"
+            />
             
-            {/* THE BRIDE CARD */}
-            <div className="p-6 sm:p-7 rounded-2xl bg-white/90 border-2 border-[#C9A227]/60 shadow-sm flex flex-col justify-between transition-transform hover:-translate-y-0.5">
-              <div>
-                <span className="inline-block text-xs font-sans uppercase tracking-[0.25em] text-[#7A1F2B] font-bold px-3.5 py-1 rounded-full bg-[#7A1F2B]/10 mb-3">
-                  The Bride
-                </span>
-                <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#2B2B2B] leading-tight">
+            {/* Multi-stop Cinematic Scrim Over Picture */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/45 pointer-events-none" />
+            <div className="absolute inset-0 bg-[#2B0E14]/15 mix-blend-color pointer-events-none" />
+
+            {/* Top Index Over Picture */}
+            <div className="relative z-10 flex items-center justify-end">
+              <span className="font-serif italic text-3xl sm:text-4xl text-white/90 drop-shadow-md select-none font-light">
+                01.
+              </span>
+            </div>
+
+            {/* Bottom Frosted Glass Card Containing Bride Details */}
+            <div className="relative z-10 w-full bg-[#FAF6EE]/95 backdrop-blur-md rounded-2xl p-5 sm:p-6 lg:p-7 border border-[#C9A24B]/45 shadow-xl transition-all duration-300 group-hover:-translate-y-1 overflow-hidden">
+              {/* Corner Watermark */}
+              <svg viewBox="0 0 100 100" fill="none" className="w-24 h-24 absolute -bottom-3 -right-3 pointer-events-none opacity-[0.06] text-[#7A1F3D]" aria-hidden="true">
+                <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
+                <circle cx="100" cy="100" r="60" stroke="currentColor" strokeWidth="1" />
+                <circle cx="100" cy="100" r="40" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 3" />
+                <circle cx="100" cy="100" r="20" stroke="currentColor" strokeWidth="1" />
+                <path d="M100 20 C70 40 40 70 20 100" stroke="currentColor" strokeWidth="1.2" />
+                <path d="M100 40 C80 55 55 80 40 100" stroke="currentColor" strokeWidth="1" />
+              </svg>
+
+              <div className="relative z-10">
+                {/* Bride Name */}
+                <h3 className="font-serif text-3xl sm:text-4xl lg:text-[2.6rem] font-semibold text-[#2B2B2B] leading-tight tracking-wide mb-0.5">
                   Abhirami S L
                 </h3>
-                <div className="mt-3.5 pt-3.5 border-t border-[#C9A227]/30 space-y-1">
-                  <p className="text-sm sm:text-base font-serif font-semibold text-[#7A1F2B]">
-                    D/o. Mr. K. Sanjayan & Mrs. Leena. R
-                  </p>
-                  <p className="text-xs sm:text-sm text-neutral-700 font-serif">
-                    Kunnuvila Veedu, Chathanpara, Thottakkadu P.O, Attingal
-                  </p>
-                  <p className="text-xs text-neutral-500 font-sans font-medium pt-1">
-                    Mob: 9048728978 / 9048728981
-                  </p>
+                <p className="font-serif italic text-xs sm:text-sm text-[#7A1F3D] font-medium mb-3">
+                  Bride
+                </p>
+
+                {/* Clear Hierarchy: Parents > Address > Phone */}
+                <div className="pt-3 border-t border-[#C9A24B]/35 space-y-2.5">
+                  {/* Parents Line */}
+                  <div>
+                    <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#C9A24B] font-semibold block mb-0.5">
+                      Parents
+                    </span>
+                    <p className="text-[13px] sm:text-[14px] font-sans font-medium text-[#7A1F3D] leading-[1.6]">
+                      D/o. Mr. K. Sanjayan &amp; Mrs. Leena. R
+                    </p>
+                  </div>
+
+                  {/* Address Line */}
+                  <div>
+                    <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#C9A24B] font-semibold block mb-0.5">
+                      Residence
+                    </span>
+                    <p className="text-[13px] sm:text-[14px] font-sans text-[#595959] leading-[1.6] flex items-start gap-1.5">
+                      <MapPin className="w-4 h-4 text-[#C9A24B] shrink-0 mt-0.5" strokeWidth={1.5} />
+                      <span>Kunnuvila Veedu, Chathanpara, Thottakkadu P.O, Attingal</span>
+                    </p>
+                  </div>
+
+                  {/* Phone Line */}
+                  <div className="pt-0.5">
+                    <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#C9A24B] font-semibold block mb-0.5">
+                      Contact
+                    </span>
+                    <p className="text-[13px] sm:text-[14px] font-sans text-[#2B2B2B] font-medium leading-[1.6] flex items-center gap-1.5">
+                      <Phone className="w-3.5 h-3.5 text-[#C9A24B] shrink-0" strokeWidth={1.5} />
+                      <span>
+                        Mob: <a href="tel:9048728978" className="hover:text-[#7A1F3D] underline-offset-2 hover:underline">9048728978</a> / <a href="tel:9048728981" className="hover:text-[#7A1F3D] underline-offset-2 hover:underline">9048728981</a>
+                      </span>
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
 
-            {/* THE GROOM CARD */}
-            <div className="p-6 sm:p-7 rounded-2xl bg-white/90 border-2 border-[#C9A227]/60 shadow-sm flex flex-col justify-between transition-transform hover:-translate-y-0.5">
-              <div>
-                <span className="inline-block text-xs font-sans uppercase tracking-[0.25em] text-[#C9A227] font-bold px-3.5 py-1 rounded-full bg-[#C9A227]/10 mb-3">
-                  The Groom
-                </span>
-                <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#2B2B2B] leading-tight">
+          {/* ========================================== */}
+          {/* 2. THE GROOM CARD (CONTENTS INSIDE PIC)    */}
+          {/* ========================================== */}
+          <div 
+            className="card-fade-up relative z-10 w-full min-h-[580px] sm:min-h-[620px] lg:min-h-[660px] rounded-3xl overflow-hidden border border-[#C9A24B]/40 shadow-[0_12px_40px_rgba(122,31,61,0.12)] flex flex-col justify-between p-4 sm:p-6 lg:p-7 group transition-all duration-300 hover:shadow-2xl hover:border-[#C9A24B]"
+            style={{ animationDelay: '100ms' }}
+          >
+            {/* Background Picture */}
+            <img 
+              src={groomPhoto || "/groom-editorial.jpg"} 
+              alt="The Groom - Ajeesh R" 
+              className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105 pointer-events-none"
+            />
+            
+            {/* Multi-stop Cinematic Scrim Over Picture */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-black/45 pointer-events-none" />
+            <div className="absolute inset-0 bg-[#2B0E14]/15 mix-blend-color pointer-events-none" />
+
+            {/* Top Index Over Picture */}
+            <div className="relative z-10 flex items-center justify-end">
+              <span className="font-serif italic text-3xl sm:text-4xl text-white/90 drop-shadow-md select-none font-light">
+                02.
+              </span>
+            </div>
+
+            {/* Bottom Frosted Glass Card Containing Groom Details */}
+            <div className="relative z-10 w-full bg-[#FAF6EE]/95 backdrop-blur-md rounded-2xl p-5 sm:p-6 lg:p-7 border border-[#C9A24B]/45 shadow-xl transition-all duration-300 group-hover:-translate-y-1 overflow-hidden">
+              {/* Corner Watermark */}
+              <svg viewBox="0 0 100 100" fill="none" className="w-24 h-24 absolute -bottom-3 -right-3 pointer-events-none opacity-[0.06] text-[#7A1F3D]" aria-hidden="true">
+                <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
+                <circle cx="100" cy="100" r="60" stroke="currentColor" strokeWidth="1" />
+                <circle cx="100" cy="100" r="40" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 3" />
+                <circle cx="100" cy="100" r="20" stroke="currentColor" strokeWidth="1" />
+                <path d="M100 20 C70 40 40 70 20 100" stroke="currentColor" strokeWidth="1.2" />
+                <path d="M100 40 C80 55 55 80 40 100" stroke="currentColor" strokeWidth="1" />
+              </svg>
+
+              <div className="relative z-10">
+                {/* Groom Name */}
+                <h3 className="font-serif text-3xl sm:text-4xl lg:text-[2.6rem] font-semibold text-[#2B2B2B] leading-tight tracking-wide mb-0.5">
                   Ajeesh R
                 </h3>
-                <div className="mt-3.5 pt-3.5 border-t border-[#C9A227]/30 space-y-1">
-                  <p className="text-sm sm:text-base font-serif font-semibold text-[#7A1F2B]">
-                    S/o. Mr. Reghunathan. S & Mrs. Ushakumari. S
-                  </p>
-                  <p className="text-xs sm:text-sm text-neutral-700 font-serif">
-                    Thrayambakam, Parakkulam, Thottakkadu P.O
-                  </p>
-                  <p className="text-xs text-neutral-500 font-sans font-medium pt-1">
-                    Kunnuvila Veedu & Family
-                  </p>
+                <p className="font-serif italic text-xs sm:text-sm text-[#7A1F3D] font-medium mb-3">
+                  Groom
+                </p>
+
+                {/* Clear Hierarchy: Parents > Address > Phone */}
+                <div className="pt-3 border-t border-[#C9A24B]/35 space-y-2.5">
+                  {/* Parents Line */}
+                  <div>
+                    <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#C9A24B] font-semibold block mb-0.5">
+                      Parents
+                    </span>
+                    <p className="text-[13px] sm:text-[14px] font-sans font-medium text-[#7A1F3D] leading-[1.6]">
+                      S/o. Mr. Reghunathan. S &amp; Mrs. Ushakumari. S
+                    </p>
+                  </div>
+
+                  {/* Address Line */}
+                  <div>
+                    <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#C9A24B] font-semibold block mb-0.5">
+                      Residence
+                    </span>
+                    <p className="text-[13px] sm:text-[14px] font-sans text-[#595959] leading-[1.6] flex items-start gap-1.5">
+                      <MapPin className="w-4 h-4 text-[#C9A24B] shrink-0 mt-0.5" strokeWidth={1.5} />
+                      <span>Thrayambakam, Parakkulam, Thottakkadu P.O</span>
+                    </p>
+                  </div>
+
+                  {/* Phone Line */}
+                  <div className="pt-0.5">
+                    <span className="text-[10px] font-sans uppercase tracking-[0.2em] text-[#C9A24B] font-semibold block mb-0.5">
+                      Contact
+                    </span>
+                    <p className="text-[13px] sm:text-[14px] font-sans text-[#2B2B2B] font-medium leading-[1.6] flex items-center gap-1.5">
+                      <Phone className="w-3.5 h-3.5 text-[#C9A24B] shrink-0" strokeWidth={1.5} />
+                      <span>
+                        Mob: <a href="tel:9745585098" className="hover:text-[#7A1F3D] underline-offset-2 hover:underline">9745585098</a> / <a href="tel:8921867169" className="hover:text-[#7A1F3D] underline-offset-2 hover:underline">8921867169</a>
+                      </span>
+                    </p>
+                  </div>
                 </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        {/* ===================================================================== */}
+        {/* WEDDING VENUES & CELEBRATIONS (PERFECTLY ALIGNED SPLIT SHOWCASE)     */}
+        {/* ===================================================================== */}
+        <div id="venues" className="my-10 sm:my-14 scroll-mt-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-7 items-stretch">
+
+            {/* LEFT FEATURED HERO CARD (lg:col-span-5) */}
+            <div 
+              className="lg:col-span-5 card-fade-up relative z-10 rounded-3xl overflow-hidden bg-gradient-to-br from-[#2D0A14] via-[#4A1521] to-[#1A050A] p-6 sm:p-7 lg:p-8 text-left flex flex-col justify-between shadow-[0_12px_40px_rgba(122,31,61,0.22)] border border-[#C9A24B]/40 group h-full"
+              style={{ animationDelay: '150ms' }}
+            >
+              {/* Background atmospheric image texture / subtle overlay */}
+              <div 
+                className="absolute inset-0 opacity-25 mix-blend-overlay pointer-events-none bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"
+                style={{ backgroundImage: `url('/venue-ceremony.jpg')` }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1A050A]/95 via-[#2D0A14]/75 to-[#1A050A]/90 pointer-events-none" />
+
+              {/* Traditional Kerala Kasavu Gold Ribbon Border along Top & Bottom */}
+              <div 
+                className="absolute top-0 left-0 right-0 h-1.5 border-b border-[#C9A24B]/50 pointer-events-none z-10"
+                style={{
+                  backgroundImage: `
+                    linear-gradient(to bottom, #C9A24B 1px, transparent 1px, transparent 2px, #E5C158 2px, #E5C158 4px, transparent 4px),
+                    repeating-linear-gradient(45deg, #C9A24B 0, #C9A24B 2px, transparent 2px, transparent 6px)
+                  `,
+                  backgroundSize: '100% 4px, 6px 6px'
+                }}
+              />
+              <div 
+                className="absolute bottom-0 left-0 right-0 h-1.5 border-t border-[#C9A24B]/50 pointer-events-none z-10"
+                style={{
+                  backgroundImage: `
+                    linear-gradient(to bottom, #C9A24B 1px, transparent 1px, transparent 2px, #E5C158 2px, #E5C158 4px, transparent 4px),
+                    repeating-linear-gradient(45deg, #C9A24B 0, #C9A24B 2px, transparent 2px, transparent 6px)
+                  `,
+                  backgroundSize: '100% 4px, 6px 6px'
+                }}
+              />
+
+              {/* Decorative Corner Watermark */}
+              <svg viewBox="0 0 100 100" fill="none" className="w-32 h-32 absolute -bottom-4 -right-4 pointer-events-none opacity-10 text-[#C9A24B]" aria-hidden="true">
+                <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
+                <circle cx="100" cy="100" r="60" stroke="currentColor" strokeWidth="1" />
+                <circle cx="100" cy="100" r="40" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 3" />
+                <circle cx="100" cy="100" r="20" stroke="currentColor" strokeWidth="1" />
+                <path d="M100 20 C70 40 40 70 20 100" stroke="currentColor" strokeWidth="1.2" />
+                <path d="M100 40 C80 55 55 80 40 100" stroke="currentColor" strokeWidth="1" />
+              </svg>
+
+              {/* Top Section: Eyebrow + Main Title */}
+              <div className="relative z-10">
+                <div className="inline-flex items-center gap-2 mb-3">
+                  <span className="w-5 h-px bg-[#C9A24B]" />
+                  <span className="text-[11px] sm:text-[12px] font-sans uppercase tracking-[0.25em] text-[#E5C158] font-semibold">
+                    Celebrate Our Wedding
+                  </span>
+                </div>
+                
+                <h3 className="font-serif text-3xl sm:text-4xl lg:text-[2.5rem] font-semibold text-white leading-[1.2] tracking-wide mb-3">
+                  Two Sacred Venues, <br className="hidden sm:inline" />
+                  <span className="text-[#F6E3B4] italic font-normal">One Auspicious Celebration</span>
+                </h3>
+
+                <p className="font-serif italic text-sm sm:text-[15px] text-white/80 leading-relaxed max-w-md">
+                  Solicit your gracious presence &amp; blessings on the auspicious occasion of our wedding ceremony and evening reception.
+                </p>
+              </div>
+
+              {/* Bottom Section: Auspicious Date & Muhurtham Glass Badge */}
+              <div className="relative z-10 mt-6 pt-5 border-t border-[#C9A24B]/30">
+                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-4 sm:p-4.5 border border-[#C9A24B]/40 shadow-inner">
+                  <div className="flex items-center gap-2 text-[10.5px] uppercase tracking-[0.2em] text-[#E5C158] font-semibold mb-1">
+                    <Calendar className="w-3.5 h-3.5 text-[#C9A24B]" strokeWidth={1.5} />
+                    <span>Auspicious Wedding Day</span>
+                  </div>
+                  <h4 className="font-serif text-2xl sm:text-[1.65rem] font-semibold text-white tracking-wide">
+                    Sunday, 24 January 2027
+                  </h4>
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-[13px] font-sans text-white/85 mt-2">
+                    <span className="text-white/70">10 Makaram 1202</span>
+                    <span className="text-[#C9A24B]" aria-hidden="true">•</span>
+                    <span className="inline-flex items-center gap-1.5 text-[#F6E3B4] font-medium">
+                      <SunMedium className="w-3.5 h-3.5 text-[#C9A24B]" strokeWidth={1.5} />
+                      <span>Muhurtham: <strong className="text-white font-semibold">10:05 AM – 10:50 AM</strong></span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* RIGHT VENUE CARDS: CONJOINED CHECKERBOARD RECTANGLES (lg:col-span-7) */}
+            <div 
+              className="lg:col-span-7 card-fade-up relative z-10 rounded-3xl overflow-hidden border border-[#C9A24B]/40 shadow-[0_12px_40px_rgba(122,31,61,0.12)] bg-gradient-to-b from-white to-[#FAF6EE] h-full"
+              style={{ animationDelay: '250ms' }}
+            >
+              <div className="grid grid-cols-1 md:grid-cols-2 h-full divide-y md:divide-y-0 md:divide-x divide-[#C9A24B]/35">
+
+                {/* LEFT CONJOINED RECTANGLE: WEDDING CEREMONY (IMAGE TOP, DETAILS BOTTOM) */}
+                <div className="flex flex-col h-full justify-between">
+                  {/* Top: Ceremony Photo */}
+                  <div className="relative w-full h-52 sm:h-56 md:h-1/2 md:basis-1/2 overflow-hidden bg-neutral-100 group border-b border-[#C9A24B]/30">
+                    <img 
+                      src="/venue-ceremony.jpg" 
+                      alt="Wedding Ceremony - Sivagiri Sarada Mutt, Varkala" 
+                      className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent pointer-events-none" />
+                  </div>
+
+                  {/* Bottom: Ceremony Details */}
+                  <div className="p-5 sm:p-6 lg:p-7 flex-1 md:basis-1/2 flex flex-col justify-between text-left bg-gradient-to-b from-[#FFFDF9] to-[#FAF6EE]">
+                    <div>
+                      {/* Gold Accent Dash */}
+                      <div className="w-8 h-0.5 bg-[#C9A24B] mb-2.5" />
+
+                      {/* Editorial Category Label */}
+                      <span className="text-[11px] font-sans uppercase tracking-[0.2em] text-[#7A1F3D] font-semibold block mb-1">
+                        Wedding Ceremony
+                      </span>
+                      
+                      {/* Venue Title */}
+                      <h3 className="font-serif text-xl sm:text-2xl font-semibold text-[#2B2B2B] leading-tight mb-3.5">
+                        Sivagiri Sarada Mutt, Varkala
+                      </h3>
+
+                      {/* Details */}
+                      <div className="space-y-2.5 text-[13px] font-sans">
+                        <div className="flex items-start gap-2.5 text-[#7A1F3D]">
+                          <SunMedium className="w-4 h-4 text-[#C9A24B] shrink-0 mt-0.5" strokeWidth={1.5} />
+                          <div>
+                            <span className="text-[10px] font-sans uppercase tracking-wider text-[#C9A24B] font-semibold block">Auspicious Muhurtham</span>
+                            <span className="text-[14px] font-semibold text-[#7A1F3D] whitespace-nowrap">10:05 AM – 10:50 AM</span>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-2.5 text-[#2B2B2B]">
+                          <Clock className="w-4 h-4 text-[#C9A24B] shrink-0 mt-0.5" strokeWidth={1.5} />
+                          <div>
+                            <span className="text-[10px] font-sans uppercase tracking-wider text-[#C9A24B] font-semibold block">Morning Reception</span>
+                            <span className="text-[13px] text-[#2B2B2B] font-medium">From 9:30 AM Onwards</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Google Maps Button */}
+                    <div className="mt-5 pt-3.5 border-t border-[#C9A24B]/20">
+                      <a
+                        href="https://maps.app.goo.gl/1GZLNi8eUNfY3Eu67"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="View Sivagiri Sarada Mutt, Varkala on Google Maps and get directions"
+                        className="w-full min-h-[42px] px-4 py-2 rounded-full border border-[#C9A24B] text-[#7A1F3D] bg-white hover:bg-[#7A1F3D] hover:border-[#7A1F3D] hover:text-white transition-all duration-200 inline-flex items-center justify-between shadow-xs group/btn"
+                      >
+                        <span className="inline-flex items-center gap-2 text-[12px] sm:text-[13px] font-sans font-semibold tracking-wide">
+                          <MapPin className="w-3.5 h-3.5 text-[#C9A24B] group-hover/btn:text-white transition-colors" strokeWidth={1.5} />
+                          <span>Google Maps &amp; Directions</span>
+                        </span>
+                        <ArrowRight className="w-3.5 h-3.5 shrink-0 group-hover/btn:translate-x-0.5 transition-transform" strokeWidth={1.5} />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* RIGHT CONJOINED RECTANGLE: EVENING RECEPTION (REVERSED: DETAILS TOP, IMAGE BOTTOM) */}
+                <div className="flex flex-col h-full justify-between">
+                  {/* Top: Reception Details (REVERSED ON DESKTOP) */}
+                  <div className="order-2 md:order-1 p-5 sm:p-6 lg:p-7 flex-1 md:basis-1/2 flex flex-col justify-between text-left bg-gradient-to-b from-[#FFFDF9] to-[#FAF6EE] border-t md:border-t-0 md:border-b border-[#C9A24B]/30">
+                    <div>
+                      {/* Gold Accent Dash */}
+                      <div className="w-8 h-0.5 bg-[#C9A24B] mb-2.5" />
+
+                      {/* Editorial Category Label */}
+                      <span className="text-[11px] font-sans uppercase tracking-[0.2em] text-[#7A1F3D] font-semibold block mb-1">
+                        Evening Reception
+                      </span>
+                      
+                      {/* Venue Title */}
+                      <h3 className="font-serif text-xl sm:text-2xl font-semibold text-[#2B2B2B] leading-tight mb-3.5">
+                        Harizon Plaza, Alamcode
+                      </h3>
+
+                      {/* Details */}
+                      <div className="space-y-2.5 text-[13px] font-sans">
+                        <div className="flex items-start gap-2.5 text-[#7A1F3D]">
+                          <Clock className="w-4 h-4 text-[#C9A24B] shrink-0 mt-0.5" strokeWidth={1.5} />
+                          <div>
+                            <span className="text-[10px] font-sans uppercase tracking-wider text-[#C9A24B] font-semibold block">Reception &amp; Dinner</span>
+                            <span className="text-[14px] font-semibold text-[#7A1F3D] whitespace-nowrap">4:30 PM Onwards</span>
+                          </div>
+                        </div>
+                        <div className="flex items-start gap-2.5 text-[#2B2B2B]">
+                          <Sparkles className="w-4 h-4 text-[#C9A24B] shrink-0 mt-0.5" strokeWidth={1.5} />
+                          <div>
+                            <span className="text-[10px] font-sans uppercase tracking-wider text-[#C9A24B] font-semibold block">Celebration</span>
+                            <span className="text-[13px] text-[#2B2B2B] font-medium">With Family, Relatives &amp; Friends</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Google Maps Button */}
+                    <div className="mt-5 pt-3.5 border-t border-[#C9A24B]/20">
+                      <a
+                        href="https://maps.google.com/?q=Harizon+Plaza+Alamcode+Attingal"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="View Harizon Plaza, Alamcode on Google Maps and get directions"
+                        className="w-full min-h-[42px] px-4 py-2 rounded-full border border-[#C9A24B] text-[#7A1F3D] bg-white hover:bg-[#7A1F3D] hover:border-[#7A1F3D] hover:text-white transition-all duration-200 inline-flex items-center justify-between shadow-xs group/btn"
+                      >
+                        <span className="inline-flex items-center gap-2 text-[12px] sm:text-[13px] font-sans font-semibold tracking-wide">
+                          <MapPin className="w-3.5 h-3.5 text-[#C9A24B] group-hover/btn:text-white transition-colors" strokeWidth={1.5} />
+                          <span>Google Maps &amp; Directions</span>
+                        </span>
+                        <ArrowRight className="w-3.5 h-3.5 shrink-0 group-hover/btn:translate-x-0.5 transition-transform" strokeWidth={1.5} />
+                      </a>
+                    </div>
+                  </div>
+
+                  {/* Bottom: Reception Photo (REVERSED ON DESKTOP) */}
+                  <div className="order-1 md:order-2 relative w-full h-52 sm:h-56 md:h-1/2 md:basis-1/2 overflow-hidden bg-neutral-100 group border-b md:border-b-0 border-[#C9A24B]/30">
+                    <img 
+                      src="/venue-reception.jpg" 
+                      alt="Evening Reception - Harizon Plaza, Alamcode" 
+                      className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-transparent to-transparent pointer-events-none" />
+                  </div>
+                </div>
+
               </div>
             </div>
 
           </div>
         </div>
 
-        {/* ========================================================================= */}
-        {/* PROPERLY DESIGNED CEREMONIES & VENUES SHOWCASE (CLEAN & BALANCED)        */}
-        {/* ========================================================================= */}
-        <div className="my-8 max-w-4xl xl:max-w-5xl mx-auto">
-          
-          {/* Auspicious Date Banner */}
-          <div className="mb-6 flex flex-col items-center">
-            <span className="text-xs font-sans uppercase tracking-[0.25em] text-[#7A1F2B] font-bold">
-              Auspicious Wedding Day
-            </span>
-            <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl font-bold text-[#2B2B2B] mt-1">
-              Sunday, 24 January 2027
-            </h3>
-            <span className="text-xs sm:text-sm font-serif italic text-neutral-600 mt-0.5">
-              (10 Makaram 1202)
-            </span>
-          </div>
-
-          {/* TWO BALANCED & SYMMETRICAL EVENT CARDS */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6 text-left">
+        {/* ===================================================================== */}
+        {/* FULL STRIP: REGAL ROYAL MAROON & GOLD FAMILY COMPLIMENTS BANNER       */}
+        {/* ===================================================================== */}
+        <div className="mt-12 sm:mt-16 w-full">
+          <div className="card-fade-up relative z-10 w-full rounded-2xl sm:rounded-3xl bg-gradient-to-r from-[#24060E] via-[#481220] to-[#24060E] border border-[#C9A24B]/50 shadow-[0_14px_45px_rgba(72,18,32,0.28)] p-6 sm:p-9 md:p-10 text-center overflow-hidden group">
             
-            {/* EVENT 1: WEDDING CEREMONY */}
-            <div className="p-6 sm:p-7 rounded-2xl bg-white/90 border-2 border-[#C9A227]/60 shadow-sm flex flex-col justify-between transition-transform hover:-translate-y-0.5">
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="text-xs font-sans uppercase tracking-[0.2em] text-[#7A1F2B] font-bold px-3 py-1 rounded-full bg-[#7A1F2B]/10">
-                    1. Wedding Ceremony
-                  </span>
-                  <span className="text-xs font-serif font-semibold text-neutral-500">
-                    Morning
-                  </span>
-                </div>
+            {/* Background Atmosphere Texture & Soft Golden Shimmer */}
+            <div 
+              className="absolute inset-0 opacity-20 pointer-events-none mix-blend-overlay bg-cover bg-center"
+              style={{ backgroundImage: `url('/venue-reception.jpg')` }}
+            />
+            <div className="absolute inset-0 bg-radial-at-c from-white/10 via-transparent to-black/30 pointer-events-none" />
 
-                <h4 className="font-serif text-xl sm:text-2xl font-bold text-neutral-900 leading-tight">
-                  Sivagiri Sarada Mutt, Varkala
-                </h4>
-                <p className="text-xs text-neutral-600 font-serif mt-1">
-                  Sivagiri Mutt Road, Varkala, Thiruvananthapuram
-                </p>
+            {/* Traditional Kerala Kasavu Gold Ribbon Border along Top & Bottom */}
+            <div 
+              className="absolute top-0 left-0 right-0 h-1.5 border-b border-[#C9A24B]/60 pointer-events-none"
+              style={{
+                backgroundImage: `
+                  linear-gradient(to bottom, #C9A24B 1px, transparent 1px, transparent 2px, #E5C158 2px, #E5C158 4px, transparent 4px),
+                  repeating-linear-gradient(45deg, #C9A24B 0, #C9A24B 2px, transparent 2px, transparent 6px)
+                `,
+                backgroundSize: '100% 4px, 6px 6px'
+              }}
+            />
+            <div 
+              className="absolute bottom-0 left-0 right-0 h-1.5 border-t border-[#C9A24B]/60 pointer-events-none"
+              style={{
+                backgroundImage: `
+                  linear-gradient(to bottom, #C9A24B 1px, transparent 1px, transparent 2px, #E5C158 2px, #E5C158 4px, transparent 4px),
+                  repeating-linear-gradient(45deg, #C9A24B 0, #C9A24B 2px, transparent 2px, transparent 6px)
+                `,
+                backgroundSize: '100% 4px, 6px 6px'
+              }}
+            />
 
-                {/* Schedule Breakdown */}
-                <div className="mt-4 pt-3.5 border-t border-[#C9A227]/30 space-y-2.5">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-lg bg-wedding-pink-100 text-[#7A1F2B] flex items-center justify-center shrink-0">
-                      <Clock className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-sans font-bold uppercase tracking-wider text-[#7A1F2B]">
-                        Auspicious Muhurtham
-                      </p>
-                      <p className="font-serif text-base sm:text-lg font-bold text-neutral-900 leading-none">
-                        10:05 AM – 10:50 AM
-                      </p>
-                    </div>
-                  </div>
+            {/* Corner Filigree Watermarks */}
+            <svg viewBox="0 0 100 100" fill="none" className="w-28 h-28 absolute -top-4 -left-4 pointer-events-none opacity-10 text-[#E5C158]" aria-hidden="true">
+              <circle cx="0" cy="0" r="80" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
+              <circle cx="0" cy="0" r="60" stroke="currentColor" strokeWidth="1" />
+              <circle cx="0" cy="0" r="40" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 3" />
+              <circle cx="0" cy="0" r="20" stroke="currentColor" strokeWidth="1" />
+            </svg>
+            <svg viewBox="0 0 100 100" fill="none" className="w-28 h-28 absolute -bottom-4 -right-4 pointer-events-none opacity-10 text-[#E5C158]" aria-hidden="true">
+              <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
+              <circle cx="100" cy="100" r="60" stroke="currentColor" strokeWidth="1" />
+              <circle cx="100" cy="100" r="40" stroke="currentColor" strokeWidth="1.5" strokeDasharray="2 3" />
+              <circle cx="100" cy="100" r="20" stroke="currentColor" strokeWidth="1" />
+            </svg>
 
-                  <div className="flex items-center gap-2.5 pt-1">
-                    <div className="w-8 h-8 rounded-lg bg-wedding-gold-100 text-wedding-gold-800 flex items-center justify-center shrink-0">
-                      <Sparkles className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-sans font-bold uppercase tracking-wider text-neutral-600">
-                        Morning Reception
-                      </p>
-                      <p className="font-serif text-sm sm:text-base font-semibold text-neutral-800 leading-none">
-                        From 9:30 AM Onwards
-                      </p>
-                    </div>
-                  </div>
-                </div>
+            <div className="relative z-10 flex flex-col items-center">
+              {/* Header Label (Clean text without enclosing border/pill) */}
+              <div className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] font-sans uppercase tracking-[0.25em] font-semibold text-[#F6E3B4] mb-3">
+                <span className="w-5 h-px bg-[#E5C158]/60" />
+                <Sparkles className="w-3.5 h-3.5 text-[#E5C158]" strokeWidth={1.5} />
+                <span>With Best Compliments &amp; Blessings</span>
+                <Sparkles className="w-3.5 h-3.5 text-[#E5C158]" strokeWidth={1.5} />
+                <span className="w-5 h-px bg-[#E5C158]/60" />
               </div>
 
-              {/* Map Link */}
-              <div className="mt-5 pt-3 border-t border-neutral-100">
-                <a
-                  href="https://maps.google.com/?q=Sivagiri+Sarada+Mutt+Varkala"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-sans font-bold text-[#7A1F2B] hover:text-[#9E1B47] hover:underline"
-                >
-                  <MapPin className="w-3.5 h-3.5" />
-                  <span>View on Google Maps & Directions →</span>
-                </a>
+              {/* Prominent & Majestic Names in Gold-White Typography */}
+              <h4 className="font-serif text-2xl sm:text-4xl md:text-5xl font-semibold text-[#FFFDF9] tracking-wide my-2 drop-shadow-md">
+                Hayzen, Adithi, Adithya &amp; Relatives
+              </h4>
+
+              {/* Decorative Golden Divider with Heart Center */}
+              <div className="my-3 flex items-center justify-center gap-3 w-full max-w-sm">
+                <span className="h-px flex-1 bg-gradient-to-r from-transparent via-[#C9A24B] to-[#C9A24B]" />
+                <Heart className="w-4 h-4 text-[#E5C158] fill-[#E5C158]/20 shrink-0" strokeWidth={1.5} />
+                <span className="h-px flex-1 bg-gradient-to-l from-transparent via-[#C9A24B] to-[#C9A24B]" />
               </div>
+
+              {/* Heartfelt Blessing Line in Warm Rose-Gold */}
+              <p className="font-serif italic text-sm sm:text-base md:text-lg text-[#F6E3B4]/90 max-w-2xl mx-auto leading-relaxed font-normal">
+                "Wishing Abhirami &amp; Ajeesh a lifetime filled with boundless love, everlasting joy, and cherished togetherness."
+              </p>
             </div>
-
-            {/* EVENT 2: EVENING RECEPTION */}
-            <div className="p-6 sm:p-7 rounded-2xl bg-white/90 border-2 border-[#C9A227]/60 shadow-sm flex flex-col justify-between transition-transform hover:-translate-y-0.5">
-              <div>
-                <div className="flex items-center justify-between gap-2 mb-3">
-                  <span className="text-xs font-sans uppercase tracking-[0.2em] text-[#C9A227] font-bold px-3 py-1 rounded-full bg-[#C9A227]/15">
-                    2. Evening Reception
-                  </span>
-                  <span className="text-xs font-serif font-semibold text-neutral-500">
-                    Evening
-                  </span>
-                </div>
-
-                <h4 className="font-serif text-xl sm:text-2xl font-bold text-neutral-900 leading-tight">
-                  Harizon Plaza, Alamcode
-                </h4>
-                <p className="text-xs text-neutral-600 font-serif mt-1">
-                  Main Road, Alamcode, Attingal
-                </p>
-
-                {/* Schedule Breakdown */}
-                <div className="mt-4 pt-3.5 border-t border-[#C9A227]/30 space-y-2.5">
-                  <div className="flex items-center gap-2.5">
-                    <div className="w-8 h-8 rounded-lg bg-wedding-gold-100 text-wedding-gold-800 flex items-center justify-center shrink-0">
-                      <Clock className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-sans font-bold uppercase tracking-wider text-[#C9A227]">
-                        Reception & Dinner
-                      </p>
-                      <p className="font-serif text-base sm:text-lg font-bold text-neutral-900 leading-none">
-                        4:30 PM Onwards
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-2.5 pt-1">
-                    <div className="w-8 h-8 rounded-lg bg-wedding-pink-100 text-[#7A1F2B] flex items-center justify-center shrink-0">
-                      <Heart className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-sans font-bold uppercase tracking-wider text-neutral-600">
-                        Celebration
-                      </p>
-                      <p className="font-serif text-sm sm:text-base font-semibold text-neutral-800 leading-none">
-                        With Family, Relatives & Friends
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Map Link */}
-              <div className="mt-5 pt-3 border-t border-neutral-100">
-                <a
-                  href="https://maps.google.com/?q=Harizon+Plaza+Alamcode+Attingal"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-sans font-bold text-[#C9A227] hover:text-[#7A1F2B] hover:underline"
-                >
-                  <MapPin className="w-3.5 h-3.5" />
-                  <span>View on Google Maps & Directions →</span>
-                </a>
-              </div>
-            </div>
-
           </div>
-
         </div>
-
-        {/* Best Compliments */}
-        <p className="text-xs sm:text-sm text-neutral-600 font-serif italic my-4">
-          With best compliments from: <strong className="font-semibold text-neutral-800">Hayzen, Adithi, Adithya & Relatives</strong>
-        </p>
-
-        {/* Action Buttons to Explore Website */}
-        <div className="flex flex-wrap items-center justify-center gap-4 mt-8">
-          <button
-            onClick={() => onScrollToSection('guestbook')}
-            className="flex items-center gap-2 px-8 py-3.5 rounded-full bg-gradient-to-r from-wedding-pink-500 to-wedding-pink-600 text-white font-bold shadow-md hover:shadow-pink-glow hover:scale-105 transition-all text-sm sm:text-base cursor-pointer"
-          >
-            <Heart className="w-4 h-4 fill-white" />
-            <span>Send Your Wishes</span>
-          </button>
-
-          <button
-            onClick={() => onScrollToSection('venues')}
-            className="flex items-center gap-2 px-7 py-3.5 rounded-full bg-white border-2 border-wedding-gold-400 text-wedding-gold-800 font-bold shadow-sm hover:bg-wedding-gold-50 hover:scale-105 transition-all text-sm sm:text-base cursor-pointer"
-          >
-            <MapPin className="w-4 h-4 text-wedding-gold-600" />
-            <span>Wedding Venues & Map</span>
-          </button>
-
-          <button
-            onClick={onOpenCardModal}
-            className="flex items-center gap-2 px-6 py-3.5 rounded-full bg-wedding-ivory border border-neutral-300 text-neutral-800 font-bold shadow-sm hover:bg-white hover:border-wedding-gold-400 hover:scale-105 transition-all text-sm sm:text-base cursor-pointer"
-          >
-            <BookOpen className="w-4 h-4 text-wedding-gold-600" />
-            <span>View Invitation Card (4:5 & Print)</span>
-          </button>
-        </div>
-
-      </div>
+</div>
 
     </section>
   );

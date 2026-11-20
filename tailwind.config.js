@@ -46,7 +46,9 @@ export default {
       fontFamily: {
         serif: ['"Cormorant Garamond"', 'Playfair Display', 'Georgia', 'serif'],
         script: ['"Great Vibes"', '"Alex Brush"', 'cursive'],
-        sans: ['"Montserrat"', 'system-ui', 'sans-serif'],
+        handwriting: ['"Caveat"', '"Kalam"', '"Segoe Print"', 'cursive'],
+        signature: ['"Alex Brush"', '"Dancing Script"', '"Great Vibes"', 'cursive'],
+        sans: ['"Montserrat"', '"Inter"', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
         'gold-glow': '0 0 25px rgba(212, 175, 55, 0.4)',

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import confetti from 'canvas-confetti';
 import { weddingAudio } from '../utils/audio';
-import { Sparkles, Heart } from 'lucide-react';
+import { Heart } from 'lucide-react';
 
 export default function WeddingOpeningCard({ onComplete, isOpen }) {
   const [isOpening, setIsOpening] = useState(false);
@@ -37,6 +37,13 @@ export default function WeddingOpeningCard({ onComplete, isOpen }) {
     if (isOpening) return;
     setIsOpening(true);
 
+    // Immediately reset window scroll position to absolute top
+    try {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      if (document.documentElement) document.documentElement.scrollTop = 0;
+      if (document.body) document.body.scrollTop = 0;
+    } catch (_) {}
+
     try {
       weddingAudio.play();
     } catch (err) {
@@ -46,6 +53,11 @@ export default function WeddingOpeningCard({ onComplete, isOpen }) {
     triggerConfetti();
 
     setTimeout(() => {
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+        if (document.documentElement) document.documentElement.scrollTop = 0;
+        if (document.body) document.body.scrollTop = 0;
+      } catch (_) {}
       if (onComplete) {
         onComplete();
       }
@@ -399,10 +411,8 @@ export default function WeddingOpeningCard({ onComplete, isOpen }) {
 
         {/* BOTTOM SECTION: ELEGANT BUTTON WITH BORDER LINE MATCHING BACKGROUND */}
         <div className="pb-6 pt-3 flex flex-col items-center">
-          <div className="inline-flex items-center gap-2 px-8 sm:px-12 py-2.5 sm:py-3 rounded-full bg-[#FAF6EE] hover:bg-[#FAF4DC] border-2 border-[#C9A227] text-[#7A1F2B] font-serif text-sm sm:text-base md:text-lg tracking-widest font-bold shadow-sm hover:scale-105 active:scale-95 transition-all">
-            <Sparkles className="w-4 h-4 text-[#C9A227]" />
-            <span>Tap to Open</span>
-            <Sparkles className="w-4 h-4 text-[#C9A227]" />
+          <div className="inline-flex items-center justify-center px-8 sm:px-12 py-2.5 sm:py-3 rounded-full bg-[#FAF6EE] hover:bg-[#FAF4DC] border-2 border-[#C9A227] text-[#7A1F2B] font-serif text-sm sm:text-base md:text-lg tracking-widest font-bold shadow-sm hover:scale-105 active:scale-95 transition-all">
+            <span>Tap to Open & Play Music 🎵</span>
           </div>
         </div>
 

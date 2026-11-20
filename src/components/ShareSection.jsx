@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
-import { Share2, Copy, Check, MessageCircle, Heart, Sparkles } from 'lucide-react';
+import { Share2, Copy, Check, MessageCircle, Heart } from 'lucide-react';
 
 export default function ShareSection() {
   const [copied, setCopied] = useState(false);
 
   const shareText = 
-    `🌸 Abhirami S L & Ajeesh R are tying the knot! 💍✨\n\n` +
-    `Join us on Sunday, 24th January 2027 at Sivagiri Sarada Mutt, Varkala.\n` +
-    `Check out our wedding countdown, directions & send your blessings here:`;
+    `💍 Wedding Invitation: Abhirami S L & Ajeesh R 🌸\n\n` +
+    `Together with our families, we solicit your gracious presence & blessings on our wedding ceremony.\n\n` +
+    `📅 Sunday, 24 January 2027 (10 Makaram 1202)\n` +
+    `📍 Wedding Muhurtham: 10:05 AM – 10:50 AM at Sivagiri Sarada Mutt, Varkala\n` +
+    `🎉 Evening Reception: 4:30 PM Onwards at Harizon Plaza, Alamcode\n\n` +
+    `Tap to open our wedding invitation, get Google Maps directions & send your blessings:`;
 
   const handleCopy = () => {
     const url = window.location.href;
